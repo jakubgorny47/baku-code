@@ -97,6 +97,16 @@ void vectris_insertd(vectris* v, unsigned int index, double number) {
 	vectris_insert(v, index, &number);
 }
 
-void* vectris_remove(vectris* v, unsigned int index) {
-	
+vectris vectris_remove(vectris* v, unsigned int index) {
+    void* temp;
+    vectris  v1 = vectris _init(sizeof(vectris_get(v,0)),v->_size-1);
+    unsigned int ind = 0;
+    for(int i = 0; i < v->_size; i++){
+        if(i != index){
+            temp = vectris _get(v,i);
+            vectris _insert(&v1, ind, temp);
+            ind++;
+        }
+    }
+    return v1;
 }
